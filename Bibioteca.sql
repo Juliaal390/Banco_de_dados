@@ -25,12 +25,20 @@ create table tblalunos(
 	dtcadastro timestamp
 );
 
-create table tblalunos(
-	idaluno serial primary key,
-	nome varchar(50),
-	cpf char(11),
-	dtnascimento timestamp,
-	pai varchar(50),
-	mae varchar(50)
-	dtcadastro timestamp
+create table tbltelefones(
+	idtelefone serial primary key,
+	idaluno int,
+	ddd char(2),
+	fone char(8),
+	tipo int,
+	foreign key(idaluno) references tblalunos(idaluno)
 );
+
+insert into tblalunos(nome, cpf, dtnascimento, pai, mae, dtcadastro) values
+('João K', '12345678987', '1980-05-01', 'Fulano A', 'Fulana A', '2008-06-01'),
+('Maria F', '34565456789', '1980-04-02', 'Fulano B', 'Fulana B', '2008-06-06'),
+('Carlos P', '34545676789', '1980-06-04', 'Fulano C', 'Fulana C', '2008-06-03'),
+('Rogério M', '45434323232', '1980-05-16', 'Fulano D', 'Fulana D', '2008-06-06'),
+('Mário S', '34545656787', '1980-01-13', 'Fulano E', 'Fulana E', '2008-06-05'),
+('Antonio G', '45656765432', '1980-04-12', 'Fulano F', 'Fulana F', '2008-06-06'),
+('Gilberto A', '12134354543', '1980-06-14', 'Fulano G', 'Fulana G', '2008-06-01');
