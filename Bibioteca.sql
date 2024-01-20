@@ -1,4 +1,4 @@
---serial é um tipo de dado que se auto incrementa
+-- serial é um tipo de dado que se auto incrementa
 -- datetime não funciona no PostgreSQL
 create table tblcursos(
 	idcurso serial primary key,
@@ -86,7 +86,7 @@ create table tblacervo(
 	dtcadastro timestamp
 );
 
---para criar 2 PKs, usa-se a estrutura "primary key(PK1, PK2)". Ou seja, define as duas junto, e não separadamente
+-- para criar 2 PKs, usa-se a estrutura "primary key(PK1, PK2)". Ou seja, define as duas junto, e não separadamente
 create table tbllivroautor(
 	idacervo int,
 	idautor int,
@@ -124,3 +124,35 @@ create table tblmatriculas(
 	foreign key(idaluno) references tblalunos(idaluno),
 	foreign key(idcurso) references tblcursos(idcurso)
 );
+
+insert into tblmatriculas(idaluno, idcurso, dtmatricula, situacao) values
+(1,1,'2008-04-10',1),
+(3,3,'2008-04-13',2),
+(2,2,'2008-04-10',1),
+(5,4,'2008-01-12',2),
+(3,1,'2008-04-10',1),
+(7,3,'2008-04-13',1),
+(4,6,'2008-04-13',1),
+(6,4,'2008-04-10',2),
+(5,2,'2008-04-16',1),
+(6,5,'2008-04-13',1);
+
+create table tblunidadesacervo(
+	idunidadeacervo serial primary key,
+	idacervo int,
+	dtcadastro timestamp,
+	codigo char(10),
+	valor numeric(10,2),
+	foreign key (idacervo) references tblacervo(idacervo)
+);
+
+insert into tblunidadesacervo(idacervo, dtcadastro, codigo, valor) values
+(1, '2008-04-10', '1001', 10.00),
+(3, '2008-04-15', '1002', 15.00),
+(2, '2008-04-10', '1003', 145.00),
+(6, '2008-04-16', '1004', 45.00),
+(4, '2008-04-15', '1005', 78.00),
+(3, '2008-04-10', '1006', 102.00),
+(3, '2008-04-16', '1007', 14.00),
+(4, '2008-04-16', '1008', 136.00),
+(5, '2008-04-10', '1009', 54.00);
