@@ -75,3 +75,21 @@ insert into tblautores(nomeautor, nacionalidade) values
 ('Autor 3','Brasileiro'),
 ('Autor 4','Espanhol'),
 ('Autor 5','Brasileiro');
+
+create table tblacervo(
+	idacervo serial primary key,
+	titulo varchar(200),
+	editora int,
+	anopub int,
+	dtcadastro timestamp
+);
+
+--para criar 2 PKs, usa-se a estrutura "primary key(PK1, PK2)". Ou seja, define as duas junto, e não separadamente
+create table tbllivroautor(
+	idacervo int,
+	idautor int,
+	tipo int,
+	primary key(idacervo, idautor),
+	foreign key(idacervo) references tblacervo(idacervo),
+	foreign key(idautor) references tblautores(idautor)
+);
