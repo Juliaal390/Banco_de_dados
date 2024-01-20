@@ -2,10 +2,10 @@
 -- datetime não funciona no PostgreSQL
 create table tblcursos(
 	idcurso serial primary key,
-	curso varchar(50),
-	nivel int,
-	valor numeric(10,2),
-	dtcriacao timestamp
+	curso varchar(50) NOT NULL,
+	nivel int NOT NULL,
+	valor numeric(10,2) NOT NULL,
+	dtcriacao timestamp NOT NULL
 );
 
 insert into tblcursos(curso, nivel, valor, dtcriacao) values
@@ -19,20 +19,20 @@ insert into tblcursos(curso, nivel, valor, dtcriacao) values
 
 create table tblalunos(
 	idaluno serial primary key,
-	nome varchar(50),
-	cpf char(11),
-	dtnascimento timestamp,
-	pai varchar(50),
-	mae varchar(50)
-	dtcadastro timestamp
+	nome varchar(50) NOT NULL,
+	cpf char(11) NOT NULL,
+	dtnascimento timestamp NOT NULL,
+	pai varchar(50) NOT NULL,
+	mae varchar(50) NOT NULL,
+	dtcadastro timestamp NOT NULL
 );
 
 create table tbltelefones(
 	idtelefone serial primary key,
-	idaluno int,
-	ddd char(2),
-	fone char(8),
-	tipo int,
+	idaluno int NOT NULL,
+	ddd char(2) NOT NULL,
+	fone char(8) NOT NULL,
+	tipo int NOT NULL,
 	foreign key(idaluno) references tblalunos(idaluno)
 );
 
@@ -59,7 +59,7 @@ insert into tbltelefones(idaluno, ddd, fone, tipo) values
 
 create table tbleditoras(
 	ideditora serial primary key,
-	editora varchar(50)
+	editora varchar(50) NOT NULL
 );
 
 insert into tbleditoras(editora) values
@@ -67,8 +67,8 @@ insert into tbleditoras(editora) values
 
 create table tblautores(
 	idautor serial primary key,
-	nomeautor varchar(50),
-	nacionalidade varchar(50)
+	nomeautor varchar(50) NOT NULL,
+	nacionalidade varchar(50) NOT NULL
 );
 
 insert into tblautores(nomeautor, nacionalidade) values
@@ -80,17 +80,17 @@ insert into tblautores(nomeautor, nacionalidade) values
 
 create table tblacervo(
 	idacervo serial primary key,
-	titulo varchar(200),
-	editora int,
-	anopub int,
-	dtcadastro timestamp
+	titulo varchar(200) NOT NULL,
+	editora int NOT NULL,
+	anopub int NOT NULL,
+	dtcadastro timestamp NOT NULL
 );
 
 -- para criar 2 PKs, usa-se a estrutura "primary key(PK1, PK2)". Ou seja, define as duas junto, e não separadamente
 create table tbllivroautor(
 	idacervo int,
 	idautor int,
-	tipo int,
+	tipo int NOT NULL,
 	primary key(idacervo, idautor),
 	foreign key(idacervo) references tblacervo(idacervo),
 	foreign key(idautor) references tblautores(idautor)
@@ -117,10 +117,10 @@ insert into tbllivroautor(idacervo, idautor, tipo) values
 
 create table tblmatriculas(
 	idmatricula serial primary key,
-	idaluno int,
-	idcurso int,
+	idaluno int NOT NULL,
+	idcurso int NOT NULL,
 	dtmatricula timestamp,
-	situacao int,
+	situacao int NOT NULL,
 	foreign key(idaluno) references tblalunos(idaluno),
 	foreign key(idcurso) references tblcursos(idcurso)
 );
@@ -139,10 +139,10 @@ insert into tblmatriculas(idaluno, idcurso, dtmatricula, situacao) values
 
 create table tblunidadesacervo(
 	idunidadeacervo serial primary key,
-	idacervo int,
-	dtcadastro timestamp,
-	codigo char(10),
-	valor numeric(10,2),
+	idacervo int NOT NULL,
+	dtcadastro timestamp NOT NULL,
+	codigo char(10) NOT NULL,
+	valor numeric(10,2) NOT NULL,
 	foreign key (idacervo) references tblacervo(idacervo)
 );
 
