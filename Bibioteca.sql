@@ -1,3 +1,5 @@
+--serial é um tipo de dado que se auto incrementa
+-- datetime não funciona no PostgreSQL
 create table tblcursos(
 	idcurso serial primary key,
 	curso varchar(50),
@@ -92,4 +94,33 @@ create table tbllivroautor(
 	primary key(idacervo, idautor),
 	foreign key(idacervo) references tblacervo(idacervo),
 	foreign key(idautor) references tblautores(idautor)
+);
+
+insert into tblacervo(titulo, editora, anopub, dtcadastro) values
+('Delphi', 1, 1990, '2008-01-09'),
+('Cálculo 1', 3, 1988, '2008-01-15'),
+('Matemática', 2, 1980, '2008-01-09'),
+('Física', 2, 1990, '2008-01-15'),
+('Português', 3, 1994, '2008-01-09'),
+('Java', 4, 1980, '2008-01-15'),
+('Visual', 1, 1990, '2008-01-10');
+
+insert into tbllivroautor(idacervo, idautor, tipo) values
+(1,1,1),
+(2,2,1),
+(3,1,1),
+(4,3,1),
+(5,4,1),
+(6,4,1),
+(7,2,1),
+(2,3,2);
+
+create table tblmatriculas(
+	idmatricula serial primary key,
+	idaluno int,
+	idcurso int,
+	dtmatricula timestamp,
+	situacao int,
+	foreign key(idaluno) references tblalunos(idaluno),
+	foreign key(idcurso) references tblcursos(idcurso)
 );
