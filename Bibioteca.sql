@@ -14,3 +14,23 @@ insert into tblcursos(curso, nivel, valor, dtcriacao) values
 ('FAP', 1, 200.00, '2001-04-13'),
 ('FADIPA', 1, 208.00, '2004-07-14'),
 ('FAMOPA', 1, 204.00, '2007-06-12');
+
+create table tblalunos(
+	idaluno serial primary key,
+	nome varchar(50),
+	cpf char(11),
+	dtnascimento timestamp,
+	pai varchar(50),
+	mae varchar(50)
+	dtcadastro timestamp
+);
+
+create table tblalunos(
+	idaluno serial primary key,
+	nome varchar(50),
+	cpf char(11),
+	dtnascimento timestamp,
+	pai varchar(50),
+	mae varchar(50)
+	dtcadastro timestamp
+);
