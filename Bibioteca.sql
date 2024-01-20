@@ -54,3 +54,24 @@ insert into tbltelefones(idaluno, ddd, fone, tipo) values
 (2, '34', '12345678', 2),
 (6, '35', '15848457', 1),
 (7, '35', '78945612', 1);
+
+create table tbleditoras(
+	ideditora serial primary key,
+	editora varchar(50)
+);
+
+insert into tbleditoras(editora) values
+('Ática'), ('Globo'), ('São Paulo'), ('FESP'), ('Vision');
+
+create table tblautores(
+	idautor serial primary key,
+	nomeautor varchar(50),
+	nacionalidade varchar(50)
+);
+
+insert into tblautores(nomeautor, nacionalidade) values
+('Autor 1','Brasileiro'),
+('Autor 2','Espanhol'),
+('Autor 3','Brasileiro'),
+('Autor 4','Espanhol'),
+('Autor 5','Brasileiro');
