@@ -10,3 +10,12 @@ from tblacervo
 inner join tbllivroautor on tblacervo.idacervo=tbllivroautor.idacervo
 inner join tblautores ON tblLivroAutor.idAutor = tblAutores.idAutor
 where nomeautor='Autor 1';
+
+--liste o nome dos alunos e separe suas datas de nascimento em ano, mês e dia
+SELECT
+nome,
+  EXTRACT(YEAR FROM dtnascimento) AS ano,
+  EXTRACT(MONTH FROM dtnascimento) AS mes,
+  EXTRACT(DAY FROM dtnascimento) AS dia
+FROM
+  tblalunos;
