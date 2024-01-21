@@ -189,3 +189,59 @@ insert into tblemprestimos(idunidadeacervo, idaluno, dtemprestimo, status) value
 (7, 4, '2008-07-13',1),
 (4, 1, '2008-07-10',1),
 (8, 2, '2008-07-15',1);
+
+alter table tblemprestimos add foreign key(idaluno) references tblalunos(idaluno);
+
+alter table tblemprestimos drop constraint tblemprestimos_idaluno_fkey;
+
+alter table tblemprestimos add foreign key(idunidadeacervo)
+references tblunidadesacervo(idunidadeacervo);
+
+alter table tblemprestimos add foreign key(idaluno) references tblalunos(idaluno);
+
+create table tblenderecos(
+	idendereco serial primary key,
+	idaluno int NOT NULL,
+	logradouro varchar(50) NOT NULL,
+	numero int NOT NULL,
+	bairro varchar(50) NOT NULL,
+	complemento varchar(50),
+	cep char(8) NOT NULL,
+	cidade varchar(50) NOT NULL,
+	estado char(2) NOT NULL,
+	tipo int NOT NULL,
+	foreign key(idaluno) references tblalunos(idaluno)
+);
+
+insert into tblenderecos
+(idaluno, logradouro, numero, bairro, complemento, cep, cidade, estado, tipo)
+values
+(5, 'Log A', 344, 'Bairro 1', 'Comp 1', '37900000','Passos', 'MG', 1);
+
+insert into tblenderecos
+(idaluno, logradouro, numero, bairro, cep, cidade, estado, tipo)
+values
+(6, 'Log B', 4, 'Bairro 2', '54546545','Glória', 'MG', 1);
+
+insert into tblenderecos
+(idaluno, logradouro, numero, bairro, complemento, cep, cidade, estado, tipo)
+values
+(4, 'Log C', 34, 'Bairro 3', 'Comp 4', '45345678','Itú', 'SP', 1);
+
+insert into tblenderecos
+(idaluno, logradouro, numero, bairro, cep, cidade, estado, tipo)
+values
+(1, 'Log D', 6, 'Bairro 4', '37900000','Passos', 'MG', 1),
+(7, 'Log A', 7, 'Bairro 1', '23321234','Franca', 'SP', 1);
+
+insert into tblenderecos
+(idaluno, logradouro, numero, bairro, complemento, cep, cidade, estado, tipo)
+values
+(2, 'Log B', 89, 'Bairro 2', 'Comp 7', '34343456','Glória', 'MG', 1);
+
+insert into tblenderecos
+(idaluno, logradouro, numero, bairro, cep, cidade, estado, tipo)
+values
+(3, 'Log G', 5, 'Bairro 7', '37900000','Passos', 'MG', 1),
+(3, 'Log H', 43, 'Bairro 8', '23321234','Franca', 'SP', 2),
+(2, 'Log M', 32, 'Bairro 9', '37900000','Passos', 'MG', 2);
