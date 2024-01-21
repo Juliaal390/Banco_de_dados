@@ -156,3 +156,36 @@ insert into tblunidadesacervo(idacervo, dtcadastro, codigo, valor) values
 (3, '2008-04-16', '1007', 14.00),
 (4, '2008-04-16', '1008', 136.00),
 (5, '2008-04-10', '1009', 54.00);
+
+create table tblemprestimos(
+	idemprestimo serial primary key,
+	idunidadeacervo int NOT NULL,
+	idaluno int NOT NULL,
+	dtemprestimo timestamp NOT NULL,
+	dtdevolucao timestamp,
+	status int NOT NULL,
+	CHECK ((status=1 AND dtdevolucao IS NULL) OR (status=2 AND dtdevolucao IS NOT NULL))
+	
+);
+
+insert into tblemprestimos(idunidadeacervo, idaluno, dtemprestimo, dtdevolucao, status) values
+(1, 7,'2008-07-05','2008-07-06',2),
+(9, 1,'2008-07-02','2008-07-06',2),
+(1, 4,'2008-07-10','2008-07-11',2),
+(2, 6,'2008-07-04','2008-07-08',2),
+(3, 4,'2008-07-05','2008-07-06',2),
+(2, 5,'2008-07-06','2008-07-06',2),
+(3, 6,'2008-07-07','2008-07-11',2);
+
+update tblemprestimos set dtemprestimo='2008-07-01', dtdevolucao='2008-07-05'
+where idunidadeacervo=1 and idaluno=7 and status=2;
+
+insert into tblemprestimos(idunidadeacervo, idaluno, dtemprestimo, status) values
+(5, 7, '2008-07-08',1),
+(4, 4, '2008-07-06',1),
+(5, 3, '2008-07-10',1),
+(6, 6, '2008-07-11',1),
+(2, 3, '2008-07-06',1),
+(7, 4, '2008-07-13',1),
+(4, 1, '2008-07-10',1),
+(8, 2, '2008-07-15',1);

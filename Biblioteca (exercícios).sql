@@ -18,10 +18,9 @@
     SELECT
     nome,
     EXTRACT(YEAR FROM dtnascimento) AS ano,
-     EXTRACT(MONTH FROM dtnascimento) AS mes,
+    EXTRACT(MONTH FROM dtnascimento) AS mes,
     EXTRACT(DAY FROM dtnascimento) AS dia
-    FROM
-     tblalunos;
+    FROM tblalunos;
 
 
 --converta o campo codigo de tblunidadesacervo de CHAR para INT, com autoincremento
