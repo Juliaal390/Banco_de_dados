@@ -17,6 +17,16 @@
 
 
 
+--Selecionar todos os alunos do curso FIP, mostrando nome e telefone, ordenar por nome do aluno
+select a.nome, t.fone
+from tblalunos a
+inner join tbltelefones t on a.idaluno=t.idaluno
+inner join tblmatriculas m on a.idaluno=m.idaluno
+inner join tblcursos c on c.idcurso=m.idcurso
+where c.curso='FIP';
+
+
+
 --liste o nome dos alunos e separe suas datas de nascimento em ano, mês e dia
     SELECT
     nome,
