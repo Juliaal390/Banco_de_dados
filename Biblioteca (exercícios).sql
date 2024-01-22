@@ -17,7 +17,7 @@
 
 
 
---Selecionar todos os alunos do curso FIP, mostrando nome e telefone, ordenar por nome do aluno
+--selecionar todos os alunos do curso FIP, mostrando nome e telefone, ordenar por nome do aluno
     select a.nome, t.fone
     from tblalunos a
     inner join tbltelefones t on a.idaluno=t.idaluno
