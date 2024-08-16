@@ -1,2 +1,2 @@
 # Banco_de_dados
- Projetos de SGBD
+ Estudos de SGBD
